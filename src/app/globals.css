@@ -1,4 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
+  @apply bg-light-background text-light-text dark:bg-dark-background dark:text-dark-text;
+}
+
+/* CSS Variables for Design System */
+:root {
+  --color-light-background: hsl(0, 0%, 98%);
+  --color-light-elements: hsl(0, 0%, 100%);
+  --color-light-text: hsl(200, 15%, 8%);
+  --color-light-input: hsl(0, 0%, 52%);
+
+  --color-dark-background: hsl(207, 26%, 17%);
+  --color-dark-elements: hsl(209, 23%, 22%);
+  --color-dark-text: hsl(0, 0%, 100%);
+  --color-dark-input: hsl(0, 0%, 100%);
+
+  --shadow-light: 0 2px 4px hsla(0, 0%, 0%, 0.06);
+  --shadow-dark: 0 2px 4px hsla(0, 0%, 0%, 0.2);
+  --shadow-hover: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+
+  --transition: all 0.3s ease;
+  --border-radius: 0.5rem;
+  --radius: 0.5rem;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: sans-serif;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px; /* Homepage items base size */
+  font-weight: 300;
+  line-height: 1.5;
+  transition: var(--transition);
 }
