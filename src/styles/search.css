@@ -1,0 +1,64 @@
+@tailwind components;
+
+@layer components {
+  .search-container {
+    @apply relative w-full;
+  }
+
+  .search-icon {
+    @apply absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none;
+  }
+
+  .search-input {
+    @apply w-full pl-16 pr-6 py-4 text-sm border-0 rounded-lg shadow-md;
+    @apply bg-white dark:bg-dark-elements;
+    @apply text-gray-900 dark:text-white;
+    @apply placeholder-gray-500 dark:placeholder-gray-400;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+    transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.2s ease !important;
+  }
+  .filter-dropdown-container {
+    @apply relative;
+  }
+
+  .filter-dropdown-button {
+    @apply flex items-center justify-between w-48 px-6 py-4 text-sm text-left;
+    @apply bg-white dark:bg-dark-elements;
+    @apply text-gray-900 dark:text-white;
+    @apply rounded-lg shadow-md;
+    @apply hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+    transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.2s ease !important;
+  }
+
+  .filter-dropdown-icon {
+    @apply h-4 w-4 transition-transform duration-200;
+  }
+
+  .filter-dropdown-icon-open {
+    @apply rotate-180;
+  }
+
+  .filter-dropdown-menu {
+    @apply absolute top-full left-0 mt-2 w-48 z-50;
+    @apply bg-white dark:bg-dark-elements;
+    @apply rounded-lg shadow-lg;
+    @apply border border-gray-100 dark:border-gray-700;
+    @apply overflow-hidden;
+    transition: background-color 0.1s ease, border-color 0.1s ease !important;
+  }
+
+  .filter-dropdown-content {
+    @apply py-2;
+  }
+
+  .filter-dropdown-item {
+    @apply w-full px-6 py-3 text-sm text-left;
+    @apply text-gray-900 dark:text-white;
+    @apply hover:bg-gray-50 dark:hover:bg-gray-700;
+    transition: background-color 0.1s ease, color 0.1s ease !important;
+  }
+
+  .filter-dropdown-item-active {
+    @apply bg-blue-50 dark:bg-blue-900/20;
+  }
+}

@@ -1,0 +1,56 @@
+@tailwind components;
+
+@layer components {
+  /* Text Utilities */
+  .text-primary {
+    @apply text-light-text dark:text-dark-text;
+  }
+
+  .text-secondary {
+    @apply text-light-input dark:text-dark-text/70;
+  }
+
+  .text-homepage {
+    @apply text-sm font-normal text-light-text dark:text-dark-text;
+  }
+
+  .text-detail {
+    @apply text-base font-normal text-light-text dark:text-dark-text;
+  }
+
+  .text-label {
+    @apply font-semibold text-light-text dark:text-dark-text;
+  }
+
+  .text-value {
+    @apply font-normal text-light-input dark:text-dark-text/70;
+  }
+
+  /* Background Utilities */
+  .bg-card {
+    @apply bg-white dark:bg-dark-elements;
+  }
+
+  .bg-main {
+    @apply bg-light-background dark:bg-dark-background;
+  }
+
+  /* Border Utilities */
+  .border-card {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  /* Header Component */
+  .header {
+    @apply bg-white dark:bg-dark-elements shadow-md sticky top-0 z-50;
+    transition: background-color 0.1s ease, box-shadow 0.1s ease !important;
+  }
+
+  .header-content {
+    @apply flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .header-title {
+    @apply text-xl font-extrabold text-light-text dark:text-dark-text;
+  }
+}
