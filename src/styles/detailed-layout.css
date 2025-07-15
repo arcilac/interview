@@ -1,0 +1,144 @@
+@tailwind components;
+
+@layer components {
+  /* Botones base */
+  .btn-back {
+    @apply flex items-center gap-2 px-4 py-2 bg-white dark:bg-dark-elements;
+    @apply text-light-text dark:text-dark-text rounded-lg shadow-md hover:shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+    transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.2s ease !important;
+  }
+
+  .btn-retry {
+    @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors;
+  }
+
+  /* Contenedores principales */
+  .country-detail-container {
+    @apply min-h-screen bg-light-background dark:bg-dark-background;
+  }
+
+  .country-detail-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  /* Botón de regreso */
+  .country-detail-back-button {
+    @apply btn-back mb-8;
+  }
+
+  /* Grid principal */
+  .country-detail-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-16 items-start;
+  }
+
+  /* Sección de la bandera */
+  .country-detail-flag-section {
+    @apply order-1 lg:order-1;
+  }
+
+  .country-detail-flag-container {
+    @apply aspect-video bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg;
+  }
+
+  .country-detail-flag-image {
+    @apply w-full h-full object-cover;
+  }
+
+  .country-detail-flag-placeholder {
+    @apply w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-600;
+  }
+
+  .country-detail-flag-placeholder-text {
+    @apply text-gray-500;
+  }
+
+  /* Sección de información */
+  .country-detail-info-section {
+    @apply order-2 lg:order-2;
+  }
+
+  .country-detail-title {
+    @apply text-3xl font-bold text-light-text dark:text-dark-text mb-8;
+  }
+
+  .country-detail-info-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+  }
+
+  .country-detail-info-column {
+    @apply space-y-4;
+  }
+
+  .country-detail-info-row {
+    @apply block;
+  }
+
+  .country-detail-info-label {
+    @apply font-semibold text-light-text dark:text-dark-text;
+  }
+
+  .country-detail-info-value {
+    @apply text-light-input dark:text-dark-text/70;
+  }
+
+  /* Sección de países fronterizos */
+  .country-detail-border-section {
+    @apply mt-12;
+  }
+
+  .country-detail-border-title {
+    @apply text-lg font-semibold text-light-text dark:text-dark-text mb-4;
+  }
+
+  .country-detail-border-buttons {
+    @apply flex flex-wrap gap-2;
+  }
+
+  /* Botón de países fronterizos - ahora igual al botón back */
+  .country-detail-border-button {
+    @apply btn-back;
+  }
+
+  .country-detail-border-loading {
+    @apply text-light-input dark:text-dark-text/70 text-sm;
+  }
+
+  /* Estados de carga */
+  .country-detail-loading-container {
+    @apply min-h-screen bg-light-background dark:bg-dark-background;
+  }
+
+  .country-detail-loading-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  /* Estados de error */
+  .country-detail-error-container {
+    @apply min-h-screen bg-light-background dark:bg-dark-background;
+  }
+
+  .country-detail-error-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  .country-detail-error-inner {
+    @apply text-center;
+  }
+
+  .country-detail-error-card {
+    @apply bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-8;
+  }
+
+  .country-detail-error-title {
+    @apply text-xl font-bold text-red-800 dark:text-red-200 mb-4;
+  }
+
+  .country-detail-error-message {
+    @apply text-red-600 dark:text-red-300 mb-4;
+  }
+
+  .country-detail-error-button {
+    @apply btn-retry;
+  }
+}

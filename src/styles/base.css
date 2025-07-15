@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-light-background text-light-text dark:bg-dark-background dark:text-dark-text;
+}
+
+/* CSS Variables for Design System */
+:root {
+  --color-light-background: hsl(0, 0%, 98%);
+  --color-light-elements: hsl(0, 0%, 100%);
+  --color-light-text: hsl(200, 15%, 8%);
+  --color-light-input: hsl(0, 0%, 52%);
+
+  --color-dark-background: hsl(207, 26%, 17%);
+  --color-dark-elements: hsl(209, 23%, 22%);
+  --color-dark-text: hsl(0, 0%, 100%);
+  --color-dark-input: hsl(0, 0%, 100%);
+
+  --shadow-light: 0 2px 4px hsla(0, 0%, 0%, 0.06);
+  --shadow-dark: 0 2px 4px hsla(0, 0%, 0%, 0.2);
+  --shadow-hover: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+
+  --transition: all 0.15s ease; /* Reduced transition time for faster theme switching */
+  --border-radius: 0.5rem;
+  --radius: 0.5rem;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px; /* Homepage items base size */
+  font-weight: 300;
+  line-height: 1.5;
+  transition: var(--transition);
+}
+
+/* Dark mode setup */
+.dark {
+  color-scheme: dark;
+}
+
+/* Typography Scale */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid hsl(217, 91%, 60%);
+  outline-offset: 2px;
+}
+
+/* Faster transitions for theme changes - more uniform timing */
+* {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* Specific faster transitions for theme-sensitive elements */
+.theme-toggle,
+.filter-dropdown-button,
+.filter-dropdown-menu,
+.search-input,
+.country-card,
+.btn-primary,
+.btn-secondary,
+.header {
+  transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease,
+    box-shadow 0.1s ease !important;
+}
+
+/* Text truncation */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

@@ -1,0 +1,43 @@
+@tailwind components;
+
+@layer components {
+  .page-container {
+    @apply min-h-screen bg-light-background dark:bg-dark-background;
+  }
+
+  .page-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  .page-content-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
+  }
+
+  .search-filter-container {
+    @apply flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-12;
+  }
+
+  .search-wrapper {
+    @apply flex-1 max-w-md;
+  }
+
+  .filter-wrapper {
+    @apply md:ml-auto;
+  }
+
+  .results-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8;
+  }
+
+  .no-results {
+    @apply text-center py-12;
+  }
+
+  .no-results-title {
+    @apply text-xl font-bold text-light-text dark:text-dark-text mb-4;
+  }
+
+  .no-results-text {
+    @apply text-light-input dark:text-dark-text/70;
+  }
+}
