@@ -1,4 +1,4 @@
-// Normalize a single-country response when API returns an array
+// NOTE: Normalize a single-country response when API returns an array
 export const extractSingleCountry = <T>(data: T[]): T => {
   if (data.length === 0) throw new Error('Country not found')
 

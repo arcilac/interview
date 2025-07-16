@@ -7,21 +7,9 @@ import { storage } from '../utils/storage'
  * 2. System preference (prefers-color-scheme)
  * 3. Default to light mode
  */
-const getInitialTheme = (): boolean => {
-  if (typeof window === 'undefined') return false
-
-  // Check if user has a saved preference
-  const savedTheme = storage.get('theme')
-  if (savedTheme) {
-    return savedTheme === 'dark'
-  }
-
-  // Fall back to system preference
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-}
 
 const initialState = {
-  isDarkMode: false, // Always start with light mode for SSR
+  isDarkMode: false, // NOTE: Always start with light mode for SSR
 }
 
 const themeSlice = createSlice({

@@ -1,7 +1,6 @@
-
 import { useQuery } from '@tanstack/react-query'
 import { CountriesResponseSchema, CountrySchema } from '../schema/countriesSchema'
-import { type Country, type Region } from '../types/country'
+import { type Country } from '../types/country'
 import { api, apiGET } from './helpers/factoryCountries'
 import { extractSingleCountry } from './helpers/extractSingleCountry'
 
@@ -59,14 +58,13 @@ async function getCountryByCode(code: string): Promise<Country> {
 }
 
 // NOTE: Fetch multiple countries by their codes
-
 async function getCountriesByCodes(codes: string[]): Promise<Country[]> {
   // Early return if no codes provided
   if (codes.length === 0) return []
 
   const fields = [
     'capital',
-    'cca2', 
+    'cca2',
     'cca3',
     'currencies',
     'flags',
@@ -81,7 +79,7 @@ async function getCountriesByCodes(codes: string[]): Promise<Country[]> {
     { url: `/alpha?codes=${codes.join(',')}`, params: { fields } },
     CountriesResponseSchema,
   )
-  
+
   return countries
 }
 
