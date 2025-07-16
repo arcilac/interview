@@ -16,7 +16,7 @@
   }
 
   .country-card-flag-image {
-    @apply w-full h-auto object-contain;
+    @apply w-full h-full object-cover;
   }
 
   .country-card-content {
@@ -40,6 +40,6 @@
   }
 
   .country-card-info-value {
-    @apply text-light-input dark:text-dark-text/70;
+    @apply text-light-text dark:text-dark-text font-light;
   }
 }

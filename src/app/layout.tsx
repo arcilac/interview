@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { Nunito_Sans } from 'next/font/google'
-import { QueryProvider } from '../components/providers/QueryProvider'
-import { ThemeProvider } from '../context/ThemeContext'
+import { ClientProviders } from '../components/providers/ClientProviders'
 import { Header } from '../components/organisms/Header'
 import '../styles/base.css'
 import '../styles/country-card.css'
@@ -20,7 +19,7 @@ const nunitoSans = Nunito_Sans({
 /**
  * Root layout wrapping all pages:
  * - Injects global CSS and font variable
- * - Provides React Query and Theme contexts
+ * - Provides client-side providers (Redux, React Query, Theme)
  * - Renders Header and main content
  */
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -29,16 +28,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${nunitoSans.className} antialiased bg-light-background dark:bg-dark-background`}
       >
-        <QueryProvider>
-          <ThemeProvider>
-            <div className="min-h-screen bg-light-background dark:bg-dark-background">
-              {/* Global header with title and theme toggle */}
-              <Header />
-              {/* Page-specific content */}
-              <main>{children}</main>
-            </div>
-          </ThemeProvider>
-        </QueryProvider>
+        <ClientProviders>
+          <div className="min-h-screen bg-light-background dark:bg-dark-background">
+            {/* Global header with title and theme toggle */}
+            <Header />
+            {/* Page-specific content */}
+            <main>{children}</main>
+          </div>
+        </ClientProviders>
       </body>
     </html>
   )
