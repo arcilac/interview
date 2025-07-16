@@ -14,11 +14,11 @@ export const Search = ({
 }) => {
   const [query, setQuery] = useState(defaultValue)
 
-  // Debounce input changes by 300ms before calling onSearch
+  // Debounce input changes by 100ms before calling onSearch
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       onSearch(query)
-    }, 300)
+    }, 100)
     return () => clearTimeout(timeoutId)
   }, [query, onSearch])
 
