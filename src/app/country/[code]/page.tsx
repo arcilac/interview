@@ -20,12 +20,11 @@ import {
  * - Shows loading, error, and detail states.
  */
 export default function CountryDetailPage() {
-  const params = useParams() 
+  const params = useParams()
   const router = useRouter()
   const countryCode = params.code as string // NOTE: Cast to string for TS
 
   const { data: country, isLoading, error } = useGetCountryByCode(countryCode)
-  console.log(country, countryCode)
   const { data: borderCountries } = useGetCountriesByCodes(country?.borders || [])
 
   if (isLoading) {
@@ -62,7 +61,6 @@ export default function CountryDetailPage() {
   return (
     <div className="country-detail-container">
       <div className="country-detail-content">
-
         <button onClick={() => router.back()} className="country-detail-back-button">
           <ArrowLeft className="h-4 w-4" />
           Back

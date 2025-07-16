@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { type Country } from '../../types/country'
 import { formatNumber } from '../../utils/countryUtils'
 
@@ -15,14 +14,10 @@ export const CountryCard = ({ country }: { country: Country }) => {
         {/* Flag image or placeholder */}
         <div className="country-card-flag">
           {country.flags?.svg || country.flags?.png ? (
-            <Image
+            <img
               src={country.flags.svg || country.flags.png}
               alt={country.flags.alt || `Flag of ${country.name.common}`}
-              width={400}
-              height={160}
               className="country-card-flag-image"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              priority
             />
           ) : (
             <div className="country-card-flag-placeholder">
