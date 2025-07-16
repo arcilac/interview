@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Nunito_Sans } from 'next/font/google'
-import { ClientProviders } from '../components/providers/ClientProviders'
+import { ClientProviders } from '../providers/ClientProviders'
 import { Header } from '../components/organisms/Header'
 import '../styles/base.css'
 import '../styles/country-card.css'
