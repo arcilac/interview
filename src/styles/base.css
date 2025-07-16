@@ -22,7 +22,7 @@ body {
   --shadow-dark: 0 2px 4px hsla(0, 0%, 0%, 0.2);
   --shadow-hover: 0 4px 12px hsla(0, 0%, 0%, 0.15);
 
-  --transition: all 0.15s ease;
+  --transition: all 0.15s ease; 
   --border-radius: 0.5rem;
   --radius: 0.5rem;
 }
@@ -42,7 +42,7 @@ body {
 
 body {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
+  font-size: 14px; /* Homepage items base size */
   font-weight: 300;
   line-height: 1.5;
   transition: var(--transition);

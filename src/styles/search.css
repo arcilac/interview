@@ -10,7 +10,7 @@
   }
 
   .search-input {
-    @apply w-full pl-16 pr-6 py-4 text-sm border-0 rounded-lg shadow-md;
+    @apply w-full pl-16 pr-6 py-4 text-sm border-0 rounded shadow-md;
     @apply bg-white dark:bg-dark-elements;
     @apply text-gray-900 dark:text-white;
     @apply placeholder-gray-500 dark:placeholder-gray-400;
@@ -25,7 +25,7 @@
     @apply flex items-center justify-between w-48 px-6 py-4 text-sm text-left;
     @apply bg-white dark:bg-dark-elements;
     @apply text-gray-900 dark:text-white;
-    @apply rounded-lg shadow-md;
+    @apply rounded shadow-md;
     @apply hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
     transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.2s ease !important;
   }
@@ -41,7 +41,7 @@
   .filter-dropdown-menu {
     @apply absolute top-full left-0 mt-2 w-48 z-50;
     @apply bg-white dark:bg-dark-elements;
-    @apply rounded-lg shadow-lg;
+    @apply rounded shadow-lg;
     @apply border border-gray-100 dark:border-gray-700;
     @apply overflow-hidden;
     transition: background-color 0.1s ease, border-color 0.1s ease !important;

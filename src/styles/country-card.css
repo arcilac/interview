@@ -2,7 +2,7 @@
 
 @layer components {
   .country-card {
-    @apply bg-white dark:bg-dark-elements rounded-lg shadow-md hover:shadow-lg cursor-pointer;
+    @apply bg-white dark:bg-dark-elements rounded shadow-md hover:shadow-lg cursor-pointer;
     @apply overflow-hidden;
     transition: background-color 0.1s ease, box-shadow 0.3s ease !important;
   }

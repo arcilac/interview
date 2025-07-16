@@ -4,13 +4,13 @@
   /* Base buttons */
   .btn-back {
     @apply flex items-center gap-2 px-4 py-2 bg-white dark:bg-dark-elements;
-    @apply text-light-text dark:text-dark-text rounded-lg shadow-md hover:shadow-lg;
+    @apply text-light-text dark:text-dark-text rounded shadow-md hover:shadow-lg;
     @apply focus:outline-none focus:ring-2 focus:ring-blue-500;
     transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.2s ease !important;
   }
 
   .btn-retry {
-    @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors;
+    @apply px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors;
   }
 
   /* Main containers */
@@ -38,7 +38,7 @@
   }
 
   .country-detail-flag-container {
-    @apply aspect-video bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg;
+    @apply aspect-video bg-gray-100 dark:bg-gray-700 overflow-hidden shadow-lg;
   }
 
   .country-detail-flag-image {
@@ -127,7 +127,7 @@
   }
 
   .country-detail-error-card {
-    @apply bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-8;
+    @apply bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded p-8;
   }
 
   .country-detail-error-title {
