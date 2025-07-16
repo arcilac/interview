@@ -6,7 +6,7 @@ import { useGetAllCountries } from '../services/countries'
 import { useSearch } from '../hooks/useSearch'
 import { urlUtils } from '../utils/url'
 import type { Region } from '../types/country'
-import { renderLoading, renderError, renderNoData, renderResults } from '../components/PageSections'
+import { renderLoading, renderError, renderNoData, renderResults } from '../components/templates/PageSections'
 
 /**
  * Home page component:
