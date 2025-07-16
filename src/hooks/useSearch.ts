@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import Fuse from 'fuse.js'
-import _ from 'lodash'
+import uniqBy from 'lodash/uniqBy'
 
 // Custom hook to filter and search through a list of countries.
 export const useSearch = ({ countries, query, region }) => {
@@ -64,7 +64,7 @@ export const useSearch = ({ countries, query, region }) => {
     }
 
     // Use lodash unique to remove any potential duplicates by country code
-    result = _.uniqBy(result, 'cca3')
+    result = uniqBy(result, 'cca3')
 
     return result
   }, [countries, query, region, fuse])

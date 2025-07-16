@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../../store'
-import { setTheme } from '../../store/themeSlice'
-import { storage } from '../../utils/storage'
+import { RootState } from '../store'
+import { setTheme } from '../store/themeSlice'
+import { storage } from '../utils/storage'
 
 /**
  * Component that handles theme initialization and system preference changes
