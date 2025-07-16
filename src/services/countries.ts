@@ -1,106 +1,109 @@
-import axios from 'axios'
-import { CountriesResponseSchema, CountrySchema, type Country, type Region } from '../types/country'
 
-// Create an Axios instance configured for the restcountries API
-const api = axios.create({
-  baseURL: 'https://restcountries.com/v3.1',
-  timeout: 10000,
-  headers: { 'Content-Type': 'application/json' },
-})
+import { useQuery } from '@tanstack/react-query'
+import { CountriesResponseSchema, CountrySchema } from '../schema/countriesSchema'
+import { type Country, type Region } from '../types/country'
+import { api, apiGET } from './helpers/factoryCountries'
+import { extractSingleCountry } from './helpers/extractSingleCountry'
 
-// Helper function to make API calls and validate the response using Zod
-const apiCall = async <T>(url: string, schema: any): Promise<T> => {
-  try {
-    const { data } = await api.get(url)
-    return schema.parse(data) // Validate response with provided schema
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.status === 404) {
-      throw new Error('Resource not found')
-    }
-    throw error
-  }
+// NOTE: Fetch a list of all countries with selected fields
+async function getAllCountries(): Promise<Country[]> {
+  const fields = [
+    'capital',
+    'cca2',
+    'cca3',
+    'currencies',
+    'flags',
+    'languages',
+    'name',
+    'population',
+    'region',
+    'subregion',
+  ].join(',')
+
+  const countries = await apiGET<Country[]>(
+    { url: '/all', params: { fields } },
+    CountriesResponseSchema,
+  )
+  return countries
 }
 
-// Extract a single country from an array response
-const getSingleCountry = (data: any[]): any => {
-  if (data.length === 0) throw new Error('Country not found')
-  return data[0]
+// NOTE: Fetch details for a single country by its code
+async function getCountryByCode(code: string): Promise<Country> {
+  const fields = [
+    'area',
+    'borders',
+    'capital',
+    'cca2',
+    'cca3',
+    'currencies',
+    'flags',
+    'languages',
+    'name',
+    'population',
+    'region',
+    'subregion',
+    'timezones',
+    'tld',
+  ].join(',')
+
+  const { data } = await api.get(`/alpha/${code}`, {
+    params: { fields },
+  })
+
+  // The API can return an array even for one country, therefore it should be normalized
+  const countryData = Array.isArray(data) ? extractSingleCountry(data) : data
+
+  // Validate the fetched object against the Zod schema
+  const country = CountrySchema.parse(countryData)
+  return country
 }
 
-// Create a minimal country object required for the frontend
-const createMinimalCountry = (country: any): Country => ({
-  name: country.name || { common: 'Unknown', official: 'Unknown' },
-  cca3: country.cca3,
-  cca2: country.cca2 || '',
-  flags: country.flags || { svg: '', png: '', alt: '' },
-  population: country.population || 0,
-  region: country.region || 'Unknown',
-  subregion: country.subregion || '',
-  capital: country.capital || [],
-  currencies: country.currencies || {},
-  languages: country.languages || {},
-  borders: country.borders || [],
-  area: country.area || 0,
-  timezones: country.timezones || [],
-  tld: country.tld || [],
-})
+// NOTE: Fetch multiple countries by their codes
 
-// Service with functions to fetch countries from the API
-export const countriesService = {
-  // Fetches all countries with selected fields
-  async getAllCountries(): Promise<Country[]> {
-    return apiCall(
-      '/all?fields=name,population,region,capital,flags,cca3,cca2,currencies,languages,subregion',
-      CountriesResponseSchema,
-    )
-  },
+async function getCountriesByCodes(codes: string[]): Promise<Country[]> {
+  // Early return if no codes provided
+  if (codes.length === 0) return []
 
-  // Gets a country by its code (e.g., "COL", "US", etc.)
-  async getCountryByCode(code: string): Promise<Country> {
-    try {
-      const { data } = await api.get(
-        `/alpha/${code}?fields=name,population,region,capital,flags,cca3,cca2,currencies,subregion,languages,borders,area,timezones,tld`,
-      )
+  const fields = [
+    'capital',
+    'cca2', 
+    'cca3',
+    'currencies',
+    'flags',
+    'languages',
+    'name',
+    'population',
+    'region',
+    'subregion',
+  ].join(',')
 
-      // The API sometimes returns an array, even for a single country
-      const countryData = Array.isArray(data) ? getSingleCountry(data) : data
-
-      return CountrySchema.parse(countryData) // Validate with Zod
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response?.status === 404) {
-        throw new Error(`Country with code ${code} not found`)
-      }
-      throw error
-    }
-  },
-
-  // Searches countries by name (e.g., "Colombia", "Canada")
-  async searchCountries(name: string): Promise<Country[]> {
-    return apiCall(
-      `/name/${encodeURIComponent(name)}?fields=name,population,region,capital,flags,cca3`,
-      CountriesResponseSchema,
-    )
-  },
-
-  // Gets countries filtered by region (e.g., "Americas", "Europe")
-  async getCountriesByRegion(region: Region): Promise<Country[]> {
-    return apiCall(
-      `/region/${region}?fields=name,population,region,capital,flags,cca3`,
-      CountriesResponseSchema,
-    )
-  },
-
-  // Fetches multiple countries using a list of codes (e.g., ['COL', 'ARG'])
-  async getCountriesByCodes(codes: string[]): Promise<Country[]> {
-    if (codes.length === 0) return []
-
-    try {
-      const { data } = await api.get(`/alpha?codes=${codes.join(',')}&fields=name,cca3,flags`)
-      return Array.isArray(data)
-        ? data.filter((country) => country?.cca3).map(createMinimalCountry)
-        : []
-    } catch (error) {
-      return []
-    }
-  },
+  const countries = await apiGET<Country[]>(
+    { url: `/alpha?codes=${codes.join(',')}`, params: { fields } },
+    CountriesResponseSchema,
+  )
+  
+  return countries
 }
+
+export const useGetAllCountries = () =>
+  useQuery({
+    queryKey: ['countries'],
+    queryFn: getAllCountries,
+    staleTime: 5 * 60 * 1000,
+  })
+
+export const useGetCountryByCode = (code: string) =>
+  useQuery({
+    queryKey: ['country', code],
+    queryFn: () => getCountryByCode(code),
+    enabled: !!code,
+    staleTime: 5 * 60 * 1000,
+  })
+
+export const useGetCountriesByCodes = (codes: string[]) =>
+  useQuery({
+    queryKey: ['countries', 'codes', codes],
+    queryFn: () => getCountriesByCodes(codes),
+    enabled: Array.isArray(codes) && codes?.length > 0,
+    staleTime: 5 * 60 * 1000,
+  })
