@@ -74,8 +74,8 @@ export default function CountryDetailPage() {
                 <Image
                   src={country.flags.svg || country.flags.png}
                   alt={country.flags.alt || `Flag of ${country.name.common}`}
-                  width={800}
-                  height={600}
+                  width={900}
+                  height={800}
                   className="country-detail-flag-image"
                   priority
                 />

@@ -2,13 +2,21 @@
 
 @layer components {
   .country-card {
-    @apply bg-white dark:bg-dark-elements rounded shadow-md hover:shadow-lg cursor-pointer;
+    @apply bg-white dark:bg-dark-elements cursor-pointer;
     @apply overflow-hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
     transition: background-color 0.1s ease, box-shadow 0.3s ease !important;
+  }
+  
+  .country-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
   }
 
   .country-card-flag {
-    @apply w-full h-40 bg-gray-100 dark:bg-gray-700 overflow-hidden;
+    @apply w-full bg-gray-100 dark:bg-gray-700 overflow-hidden;
+    height: 160px;
   }
 
   .country-card-flag-placeholder {
@@ -20,26 +28,85 @@
   }
 
   .country-card-content {
-    @apply p-6;
+    @apply px-6 pt-7 pb-9;
   }
 
   .country-card-title {
-    @apply text-lg font-extrabold text-light-text dark:text-dark-text mb-4 line-clamp-1;
+    @apply text-light-text dark:text-dark-text mb-7 line-clamp-1;
+    font-size: 18px;
+    font-weight: 800;
   }
 
   .country-card-info {
-    @apply space-y-1 text-sm;
+    @apply space-y-2.5;
   }
 
   .country-card-info-row {
     @apply flex items-start;
+    font-size: 14px;
+    line-height: 16px;
   }
 
   .country-card-info-label {
-    @apply font-semibold text-light-text dark:text-dark-text mr-1;
+    @apply text-light-text dark:text-dark-text mr-1;
+    font-weight: 600;
   }
 
   .country-card-info-value {
-    @apply text-light-text dark:text-dark-text font-light;
+    @apply text-light-text dark:text-dark-text;
+    font-weight: 300;
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .country-card {
+      @apply mx-0;
+    }
+
+    .country-card-flag {
+      height: 180px;
+    }
+
+    .country-card-content {
+      @apply px-8 pt-7 pb-14;
+    }
+
+    .country-card-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .country-card-info-row {
+      font-size: 14px;
+    }
+  }
+
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    .country-card {
+      @apply mx-0;
+    }
+
+    .country-card-flag {
+      height: 180px;
+    }
+
+    .country-card-content {
+      @apply px-8 pt-7 pb-14;
+    }
+
+    .country-card-title {
+      font-size: 18px;
+      font-weight: 800;
+      @apply mb-7;
+    }
+
+    .country-card-info {
+      @apply space-y-2;
+    }
+
+    .country-card-info-row {
+      font-size: 14px;
+    }
   }
 }
