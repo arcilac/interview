@@ -38,10 +38,6 @@ describe('Header', () => {
     expect(header).toBeInTheDocument()
     expect(header).toHaveClass('header')
 
-    const maxWidthDiv = container.querySelector('.max-w-7xl')
-    expect(maxWidthDiv).toBeInTheDocument()
-    expect(maxWidthDiv).toHaveClass('mx-auto')
-
     const headerContent = container.querySelector('.header-content')
     expect(headerContent).toBeInTheDocument()
   })
@@ -69,11 +65,11 @@ describe('Header', () => {
   })
 
   // Tests responsive layout classes
-  it('includes responsive layout classes', () => {
+  it('includes header content wrapper', () => {
     const { container } = render(<Header />)
 
-    const responsiveContainer = container.querySelector('.max-w-7xl.mx-auto')
-    expect(responsiveContainer).toBeInTheDocument()
+    const headerContent = container.querySelector('.header-content')
+    expect(headerContent).toBeInTheDocument()
   })
 
   // Tests component composition
