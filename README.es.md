@@ -56,6 +56,8 @@ Una aplicación web moderna y responsiva para explorar países de todo el mundo.
 
 - **Webpack Bundle Analyzer** - Análisis visual del tamaño y composición del bundle [🔗](https://github.com/webpack-contrib/webpack-bundle-analyzer)
 - **@next/bundle-analyzer** - Integración de Next.js para análisis de bundle [🔗](https://www.npmjs.com/package/@next/bundle-analyzer)
+- **Storybook** - Entorno de desarrollo de componentes para desarrollo y documentación de UI [🔗](https://storybook.js.org/)
+- **@storybook/addon-themes** - Addon de cambio de temas para Storybook [🔗](https://storybook.js.org/addons/@storybook/addon-themes)
 
 ## 🏗️ Arquitectura
 
@@ -155,11 +157,38 @@ La estructura de componentes sigue principios de Diseño Atómico:
 - **Optimización de Rendimiento**: Búsqueda con debounce, cómputos memorizados y re-renders eficientes
 - **Optimización de Tamaño de Paquete**: Uso de importaciones selectivas (ej., `lodash/uniqBy`) en lugar de bibliotecas completas para reducir el tamaño del paquete JavaScript y mejorar los tiempos de carga
 
+## 🎨 Desarrollo de Componentes con Storybook
+
+Este proyecto incluye Storybook para desarrollo aislado de componentes y documentación.
+
+### Ejecutar Storybook
+
+```bash
+# Iniciar servidor de desarrollo de Storybook
+npm run storybook
+```
+
+Storybook estará disponible en http://localhost:6006
+
+### Organización de Componentes
+
+Los componentes están organizados siguiendo los principios de Diseño Atómico:
+
+- **Átomos**: Elementos UI básicos (Loading, ThemeToggle)
+- **Moléculas**: Componentes compuestos (CountryCard, Search, FilterDropdown)
+- **Organismos**: Componentes complejos (próximamente)
+
+### Arquitectura de Storybook
+
+- **StorybookProvider**: Proveedor personalizado que envuelve componentes con proveedores Redux, React Query y Theme
+- **Patrón Presentacional/Contenedor**: Componentes como ThemeToggle se dividen en componentes presentacionales (ThemeToggleBase) y contenedores
+- **Datos Mock**: Datos de países simulados disponibles en `.storybook/mockData` para ejemplos de historias consistentes
+
 ## 📦 Instalación y Configuración
 
 ### Prerrequisitos
 
-- Node.js 18.0 o superior
+- Node.js 20.0 o superior
 - Gestor de paquetes npm
 
 ### Pasos de Instalación

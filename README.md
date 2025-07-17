@@ -56,6 +56,8 @@ A modern, responsive web application for exploring countries around the world. B
 
 - **Webpack Bundle Analyzer** - Visual analysis of bundle size and composition [🔗](https://github.com/webpack-contrib/webpack-bundle-analyzer)
 - **@next/bundle-analyzer** - Next.js integration for bundle analysis [🔗](https://www.npmjs.com/package/@next/bundle-analyzer)
+- **Storybook** - Component development environment for UI development and documentation [🔗](https://storybook.js.org/)
+- **@storybook/addon-themes** - Theme switching addon for Storybook [🔗](https://storybook.js.org/addons/@storybook/addon-themes)
 
 ## 🏗️ Architecture
 
@@ -156,11 +158,38 @@ The component structure follows Atomic Design principles:
 - **Performance Optimization**: Debounced search, memoized computations, and efficient re-renders
 - **Bundle Size Optimization**: Using selective imports (e.g., `lodash/uniqBy`) instead of entire libraries to reduce JavaScript bundle size and improve loading times
 
+## 🎨 Component Development with Storybook
+
+This project includes Storybook for isolated component development and documentation.
+
+### Running Storybook
+
+```bash
+# Start Storybook development server
+npm run storybook
+```
+
+Storybook will be available at http://localhost:6006
+
+### Component Organization
+
+Components are organized following Atomic Design principles:
+
+- **Atoms**: Basic UI elements (Loading, ThemeToggle)
+- **Molecules**: Composite components (CountryCard, Search, FilterDropdown)
+- **Organisms**: Complex components (coming soon)
+
+### Storybook Architecture
+
+- **StorybookProvider**: Custom provider that wraps components with Redux, React Query, and Theme providers
+- **Presentational/Container Pattern**: Components like ThemeToggle are split into presentational (ThemeToggleBase) and container components
+- **Mock Data**: Mock country data available in `.storybook/mockData` for consistent story examples
+
 ## 📦 Installation & Setup
 
 ### Prerequisites
 
-- Node.js 18.0 or higher
+- Node.js 20.0 or higher
 - npm package manager
 
 ### Installation Steps
