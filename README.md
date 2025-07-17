@@ -52,6 +52,11 @@ A modern, responsive web application for exploring countries around the world. B
 - **Axios** - HTTP client for REST Countries API with request/response interceptors [🔗](https://axios-http.com/)
 - **REST Countries API** - Comprehensive country data source [🔗](https://restcountries.com/)
 
+### Development & Analysis Tools
+
+- **Webpack Bundle Analyzer** - Visual analysis of bundle size and composition [🔗](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+- **@next/bundle-analyzer** - Next.js integration for bundle analysis [🔗](https://www.npmjs.com/package/@next/bundle-analyzer)
+
 ## 🏗️ Architecture
 
 ### Project Structure
@@ -190,6 +195,55 @@ The component structure follows Atomic Design principles:
 npm run build
 npm start
 ```
+
+## 📊 Bundle Analysis
+
+This project includes bundle analysis tools to help optimize performance and understand the composition of the JavaScript bundles.
+
+### Bundle Analyzer Setup
+
+The project uses **Webpack Bundle Analyzer** and **@next/bundle-analyzer** to provide visual insights into bundle composition:
+
+```bash
+# Install bundle analyzer dependencies (already included in package.json)
+npm install webpack-bundle-analyzer @next/bundle-analyzer
+```
+
+### Running Bundle Analysis
+
+To analyze the bundle composition and identify optimization opportunities:
+
+1. **Build the project for production**
+
+   ```bash
+   npm run build
+   ```
+
+2. **Run bundle analysis**
+
+   ```bash
+   ANALYZE=true npm run build
+   ```
+
+### Understanding Bundle Analysis Results
+
+The bundle analyzer will open in your browser showing an interactive treemap visualization:
+
+![Bundle Analysis Visualization](./docs/bundle-analysis.png)
+
+#### Key Metrics to Monitor:
+
+- **Total bundle size**: Should be optimized for fast loading
+- **Chunk distribution**: Balanced loading across different parts of the app
+- **Third-party dependencies**: Libraries like Fuse.js, Axios, Redux impact
+- **Code splitting effectiveness**: How well the app splits code for lazy loading
+
+This analysis helps identify:
+
+- Opportunities for further code splitting
+- Unused dependencies that can be removed
+- Large libraries that might need alternatives
+- Optimization strategies for better performance
 
 ## 🔧 Configuration
 
