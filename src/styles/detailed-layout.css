@@ -3,12 +3,20 @@
 @layer components {
   /* Base buttons */
   .btn-back {
-    @apply flex items-center gap-2 px-4 py-2 bg-white dark:bg-dark-elements;
-    @apply text-light-text dark:text-dark-text rounded shadow-md hover:shadow-lg;
-    @apply focus:outline-none focus:ring-2 focus:ring-blue-500;
-    transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.2s ease !important;
+    @apply flex items-center gap-2 bg-white dark:bg-dark-elements;
+    @apply text-light-text dark:text-dark-text rounded-md;
+    @apply focus:outline-none;
+    box-shadow: var(--shadow-light);
+    transition: all 0.2s ease;
+    padding: 10px 32px;
+    font-size: 16px;
+    font-weight: 300;
+    border: none;
+    cursor: pointer;
   }
-
+  .btn-back:hover {
+    @apply shadow-md;
+  }
   .btn-retry {
     @apply px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors;
   }
@@ -17,38 +25,43 @@
   .country-detail-container {
     @apply min-h-screen bg-light-background dark:bg-dark-background;
   }
-
   .country-detail-content {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+    @apply px-20 py-8;
+    padding-top: 80px;
+    max-width: 1440px;
+    margin: 0 auto;
   }
 
   /* Back button */
   .country-detail-back-button {
-    @apply btn-back mb-8;
+    @apply btn-back;
+    margin-bottom: 80px;
   }
 
   /* Main grid */
   .country-detail-grid {
-    @apply grid grid-cols-1 lg:grid-cols-2 gap-16 items-start;
+    @apply grid grid-cols-1 lg:grid-cols-2 items-center;
+    gap: 80px;
+    margin-top: 0;
   }
 
   /* Flag section */
   .country-detail-flag-section {
     @apply order-1 lg:order-1;
   }
-
   .country-detail-flag-container {
-    @apply aspect-video bg-gray-100 dark:bg-gray-700 overflow-hidden shadow-lg;
+    @apply bg-gray-100 dark:bg-gray-700 overflow-hidden;
+    width: 560px;
+    max-width: 100%;
+    height: 370px;
+    box-shadow: none;
   }
-
   .country-detail-flag-image {
     @apply w-full h-full object-cover;
   }
-
   .country-detail-flag-placeholder {
     @apply w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-600;
   }
-
   .country-detail-flag-placeholder-text {
     @apply text-gray-500;
   }
@@ -57,47 +70,65 @@
   .country-detail-info-section {
     @apply order-2 lg:order-2;
   }
-
   .country-detail-title {
-    @apply text-3xl font-bold text-light-text dark:text-dark-text mb-8;
+    @apply text-light-text dark:text-dark-text mb-6;
+    font-size: 32px;
+    font-weight: 800;
+    margin-left: 0px;
+    margin-top: 25px;
   }
-
   .country-detail-info-grid {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-4 items-start;
+    margin-top: 35px;
   }
-
   .country-detail-info-column {
-    @apply space-y-4;
+    @apply space-y-1.5;
   }
-
+  .country-detail-info-column:nth-child(2) {
+    @apply lg:ml-4;
+  }
   .country-detail-info-row {
-    @apply block;
+    @apply flex items-baseline gap-1;
+    font-size: 16px;
+    line-height: 26px;
   }
-
   .country-detail-info-label {
-    @apply font-semibold text-light-text dark:text-dark-text;
+    @apply text-light-text dark:text-dark-text;
+    font-weight: 600;
   }
-
   .country-detail-info-value {
-    @apply text-light-text dark:text-dark-text font-light;
+    @apply text-light-text dark:text-dark-text;
+    font-weight: 300;
   }
 
   /* Border countries section */
   .country-detail-border-section {
-    @apply mt-12;
+    @apply mt-20 flex items-center gap-4;
   }
 
   .country-detail-border-title {
-    @apply text-lg font-semibold text-light-text dark:text-dark-text mb-4;
+    @apply text-light-text dark:text-dark-text;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-top: 0;
   }
 
   .country-detail-border-buttons {
-    @apply flex flex-wrap gap-2;
+    @apply flex gap-2.5;
   }
-
-  /* Border countries button - now equal to the back button */
+  /* Border countries button */
   .country-detail-border-button {
-    @apply btn-back;
+    @apply bg-white dark:bg-dark-elements text-light-text dark:text-dark-text;
+    @apply rounded-sm;
+    box-shadow: var(--shadow-light);
+    padding: 5px 23px;
+    font-size: 14px;
+    font-weight: 300;
+    transition: all 0.2s ease;
+  }
+  .country-detail-border-button:hover {
+    @apply shadow-md;
   }
 
   .country-detail-border-loading {
@@ -108,7 +139,6 @@
   .country-detail-loading-container {
     @apply min-h-screen bg-light-background dark:bg-dark-background;
   }
-
   .country-detail-loading-content {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
   }
@@ -117,28 +147,150 @@
   .country-detail-error-container {
     @apply min-h-screen bg-light-background dark:bg-dark-background;
   }
-
   .country-detail-error-content {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
   }
-
   .country-detail-error-inner {
     @apply text-center;
   }
-
   .country-detail-error-card {
     @apply bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded p-8;
   }
-
   .country-detail-error-title {
     @apply text-xl font-bold text-red-800 dark:text-red-200 mb-4;
   }
-
   .country-detail-error-message {
     @apply text-red-600 dark:text-red-300 mb-4;
   }
-
   .country-detail-error-button {
     @apply btn-retry;
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .country-detail-info-row {
+      line-height: 30px;
+    }
+    .country-detail-content {
+      @apply mx-2 px-4 py-4;
+      padding-top: 20px;
+    }
+
+    .country-detail-back-button {
+      margin-bottom: 40px;
+      padding: 8px 24px;
+      font-size: 0.875rem;
+    }
+
+    .country-detail-grid {
+      @apply gap-8;
+      margin-top: 40px;
+    }
+
+    .country-detail-flag-container {
+      margin-top: 0;
+      width: 100%;
+      height: 200px;
+    }
+
+    .country-detail-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-top: 30px;
+      margin-left: 30px;
+      margin-bottom: 15px;
+    }
+
+    .country-detail-info-grid {
+      @apply grid-cols-1 gap-6;
+      margin-left: 30px;
+      margin-top: 25px;
+    }
+
+    .country-detail-info-column {
+      margin-left: 0;
+    }
+
+    .country-detail-info-column:nth-child(2) {
+      margin-top: 20px;
+    }
+
+    .country-detail-border-section {
+      @apply flex-col items-start;
+      margin-top: 32px;
+      margin-left: 30px;
+    }
+
+    .country-detail-border-title {
+      margin-left: 0;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .country-detail-border-buttons {
+      @apply w-full;
+    }
+
+    .country-detail-border-button {
+      font-size: 0.75rem;
+      padding: 6px 16px;
+      margin-top: 0;
+    }
+  }
+
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    .country-detail-content {
+      @apply mx-1 px-2;
+    }
+
+    @media (max-width: 768px) {
+      .country-detail-back-button {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        padding: 6px 30px;
+        font-size: 0.87rem;
+        font-weight: 600;
+      }
+    }
+
+    .country-detail-grid {
+      @apply gap-6;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .country-detail-flag-container {
+        margin-top: 25px;
+        margin-left: 20px;
+        width: 90%;
+        height: 266px;
+      }
+    }
+
+    .country-detail-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 0px;
+    }
+
+    .country-detail-info-grid {
+      @apply gap-4;
+    }
+
+    .country-detail-border-section {
+      margin-top: 24px;
+    }
+
+    .country-detail-border-title {
+      @apply text-sm;
+      margin-bottom: 8px;
+    }
+
+    .country-detail-border-button {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+    }
   }
 }

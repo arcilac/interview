@@ -18,13 +18,20 @@ body {
   --color-dark-text: hsl(0, 0%, 100%);
   --color-dark-input: hsl(0, 0%, 100%);
 
-  --shadow-light: 0 2px 4px hsla(0, 0%, 0%, 0.06);
-  --shadow-dark: 0 2px 4px hsla(0, 0%, 0%, 0.2);
-  --shadow-hover: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+  /* Updated shadows - more subtle */
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  --transition: all 0.15s ease; 
-  --border-radius: 0.5rem;
-  --radius: 0.5rem;
+  --transition: all 0.15s ease;
+  --border-radius: 5px;
+  --radius: 5px;
+
+  /* Typography weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 600;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 800;
 }
 
 /* Base styles */
@@ -43,8 +50,8 @@ body {
 body {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px; /* Homepage items base size */
-  font-weight: 300;
-  line-height: 1.5;
+  font-weight: 600;
+  line-height: 1.6;
   transition: var(--transition);
 }
 
