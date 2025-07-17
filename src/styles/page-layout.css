@@ -20,7 +20,7 @@
   .search-filter-container {
     @apply flex flex-col md:flex-row md:justify-between md:items-center gap-10 mb-12;
   }
-  
+
   @media (max-width: 768px) {
     .search-filter-container {
       gap: 48px;
@@ -33,7 +33,7 @@
     @apply w-full;
     max-width: 100%;
   }
-  
+
   @media (min-width: 768px) {
     .search-wrapper {
       max-width: 480px;
@@ -49,14 +49,14 @@
     column-gap: 75px;
     row-gap: 75px;
   }
-  
+
   @media (max-width: 1024px) {
     .results-grid {
       column-gap: 40px;
       row-gap: 40px;
     }
   }
-  
+
   @media (max-width: 768px) {
     .results-grid {
       @apply grid-cols-1;
@@ -65,7 +65,7 @@
       padding: 0 40px;
     }
   }
-  
+
   @media (max-width: 480px) {
     .results-grid {
       padding: 0 54px;
@@ -85,7 +85,7 @@
     @apply text-light-input dark:text-dark-text/70;
   }
 
-  /* Mobile responsive adjustments - already handled above with responsive utilities */
+  /* Mobile responsive adjustments */
 
   /* Extra small mobile devices */
   @media (max-width: 480px) {

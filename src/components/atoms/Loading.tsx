@@ -1,6 +1,5 @@
 import { Loader2 } from 'lucide-react'
 
-// Loading spinner component with optional text and additional styling
 export const Loading = ({
   text = 'Loading...',
   className = '',
@@ -9,11 +8,9 @@ export const Loading = ({
   className?: string
 }) => {
   return (
-    <div className={`loading-container ${className}`}>
-      <div className="loading-content">
-        <Loader2 className="loading-spinner" />
-        <p className="loading-text">{text}</p>
-      </div>
+    <div className={`loading-spinner-container ${className}`}>
+      <Loader2 className="loading-spinner-icon animate-spin" />
+      <span className="loading-spinner-text">{text}</span>
     </div>
   )
 }

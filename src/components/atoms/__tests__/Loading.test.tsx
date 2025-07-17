@@ -19,30 +19,28 @@ describe('Loading', () => {
   // Ensures custom className is applied in addition to base container class
   it('applies custom className to the container', () => {
     const { container } = render(<Loading className="my-custom-class" />)
-    const loadingContainer = container.querySelector('.loading-container')
-    expect(loadingContainer).toHaveClass('loading-container')
+    const loadingContainer = container.querySelector('.loading-spinner-container')
+    expect(loadingContainer).toHaveClass('loading-spinner-container')
     expect(loadingContainer).toHaveClass('my-custom-class')
   })
 
   // Confirms that the spinner element is present and is an SVG
   it('renders the spinner icon', () => {
     const { container } = render(<Loading />)
-    const spinner = container.querySelector('.loading-spinner')
+    const spinner = container.querySelector('.loading-spinner-icon')
     expect(spinner).toBeInTheDocument()
     expect(spinner).toBeInstanceOf(SVGElement)
   })
 
   // Validates the overall structure of the component with expected class names
-  it('has correct structure with loading-content wrapper', () => {
+  it('has correct structure', () => {
     const { container } = render(<Loading />)
 
-    const loadingContainer = container.querySelector('.loading-container')
-    const loadingContent = container.querySelector('.loading-content')
-    const spinner = container.querySelector('.loading-spinner')
-    const text = container.querySelector('.loading-text')
+    const loadingContainer = container.querySelector('.loading-spinner-container')
+    const spinner = container.querySelector('.loading-spinner-icon')
+    const text = container.querySelector('.loading-spinner-text')
 
     expect(loadingContainer).toBeInTheDocument()
-    expect(loadingContent).toBeInTheDocument()
     expect(spinner).toBeInTheDocument()
     expect(text).toBeInTheDocument()
   })
@@ -50,7 +48,7 @@ describe('Loading', () => {
   // Tests that the component correctly renders when the text is an empty string
   it('handles empty text prop', () => {
     const { container } = render(<Loading text="" />)
-    const textElement = container.querySelector('.loading-text')
+    const textElement = container.querySelector('.loading-spinner-text')
     expect(textElement).toBeInTheDocument()
     expect(textElement).toHaveTextContent('')
   })
@@ -67,6 +65,6 @@ describe('Loading', () => {
   it('has proper accessibility attributes', () => {
     render(<Loading />)
     const text = screen.getByText('Loading...')
-    expect(text).toHaveClass('loading-text')
+    expect(text).toHaveClass('loading-spinner-text')
   })
 })
