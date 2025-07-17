@@ -52,6 +52,11 @@ Una aplicación web moderna y responsiva para explorar países de todo el mundo.
 - **Axios** - Cliente HTTP para REST Countries API con interceptores de solicitud/respuesta [🔗](https://axios-http.com/)
 - **REST Countries API** - Fuente de datos completa de países [🔗](https://restcountries.com/)
 
+### Herramientas de Desarrollo y Análisis
+
+- **Webpack Bundle Analyzer** - Análisis visual del tamaño y composición del bundle [🔗](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+- **@next/bundle-analyzer** - Integración de Next.js para análisis de bundle [🔗](https://www.npmjs.com/package/@next/bundle-analyzer)
+
 ## 🏗️ Arquitectura
 
 ### Estructura del Proyecto
@@ -90,10 +95,10 @@ La estructura de componentes sigue principios de Diseño Atómico:
 - **Organismos**: Componentes complejos (LazyCountryGrid, Header)
 - **Plantillas**: Layouts de página (PageSections)
 
-#### 2. **Arquitectura por Capas**
+#### 2. **Arquitectura en Capas**
 
 - **Capa de Presentación**: Componentes React con clara separación de responsabilidades
-- **Capa de Datos**: Servicios API con validación de tipos
+- **Capa de Datos**: Servicios de API con validación de tipos
 - **Gestión de Estado**: Redux para estado del cliente, React Query para estado del servidor
 
 #### 3. **Arquitectura URL-First**
@@ -106,7 +111,7 @@ La estructura de componentes sigue principios de Diseño Atómico:
 
 - Los esquemas Zod validan las respuestas de la API en tiempo de ejecución
 - Los tipos TypeScript generados desde esquemas aseguran seguridad en tiempo de compilación
-- Configuración de API centralizada con Axios
+- Configuración centralizada de API con Axios
 
 ## 🎯 Enfoque de Solución
 
@@ -116,8 +121,8 @@ La estructura de componentes sigue principios de Diseño Atómico:
 
    - Implementación de carga perezosa para renderizado progresivo de tarjetas de países mientras el usuario navega
    - Uso de React Query para caché inteligente y actualizaciones en segundo plano
-   - Entrada de búsqueda con debounce para minimizar llamadas a API
-   - Importaciones selectivas de Lodash (solo función `uniqBy`) para minimizar el tamaño del paquete
+   - Entrada de búsqueda con debounce para minimizar llamadas a la API
+   - Importaciones selectivas de Lodash (solo función `uniqBy`) para minimizar el tamaño del paquete (bundle)
 
 2. **Experiencia de Usuario**
 
@@ -140,7 +145,7 @@ La estructura de componentes sigue principios de Diseño Atómico:
 
 ### Desafíos Técnicos Resueltos
 
-- **Renderizado de Grandes Conjuntos de Datos**: La carga perezosa previene problemas de rendimiento con más de 250 países cargando progresivamente tarjetas de países mientras entran en vista, reduciendo el tiempo de renderizado inicial y uso de memoria
+- **Renderizado de Grandes Conjuntos de Datos**: La carga perezosa previene problemas de rendimiento con más de 250 países cargando progresivamente las tarjetas de países mientras entran en vista, reduciendo el tiempo de renderizado inicial y uso de memoria
 - **Rendimiento de Búsqueda**: Búsqueda difusa con Fuse.js e indexación optimizada para coincidencias inteligentes
 - **Sincronización de Estado**: Gestión de estado de URL con navegación adecuada e historial del navegador
 - **Sistema de Temas**: Modo oscuro/claro con detección de preferencias del sistema usando Redux
@@ -183,12 +188,61 @@ La estructura de componentes sigue principios de Diseño Atómico:
    http://localhost:3000
    ```
 
-### Compilar para Producción
+### Construcción para Producción
 
 ```bash
 npm run build
 npm start
 ```
+
+## 📊 Análisis de Bundle
+
+Este proyecto incluye herramientas de análisis de bundle para ayudar a optimizar el rendimiento y entender la composición de los bundles JavaScript.
+
+### Configuración del Analizador de Bundle
+
+El proyecto utiliza **Webpack Bundle Analyzer** y **@next/bundle-analyzer** para proporcionar información visual sobre la composición del bundle:
+
+```bash
+# Instalar dependencias del analizador de bundle (ya incluidas en package.json)
+npm install webpack-bundle-analyzer @next/bundle-analyzer
+```
+
+### Ejecutar Análisis de Bundle
+
+Para analizar la composición del bundle e identificar oportunidades de optimización:
+
+1. **Construir el proyecto para producción**
+
+   ```bash
+   npm run build
+   ```
+
+2. **Ejecutar análisis de bundle**
+
+   ```bash
+   ANALYZE=true npm run build
+   ```
+
+### Entendiendo los Resultados del Análisis de Bundle
+
+El analizador de bundle se abrirá en tu navegador mostrando una visualización interactiva de mapa de árbol:
+
+![Visualización del Análisis de Bundle](./docs/bundle-analysis.png)
+
+#### Métricas Clave a Monitorear:
+
+- **Tamaño total del bundle**: Debe estar optimizado para carga rápida
+- **Distribución de chunks**: Carga balanceada a través de diferentes partes de la app
+- **Dependencias de terceros**: Impacto de librerías como Fuse.js, Axios, Redux
+- **Efectividad de la división de código**: Qué tan bien la app divide el código para carga perezosa
+
+Este análisis ayuda a identificar:
+
+- Oportunidades para mayor división de código
+- Dependencias no utilizadas que pueden ser removidas
+- Librerías grandes que podrían necesitar alternativas
+- Estrategias de optimización para mejor rendimiento
 
 ## 🔧 Configuración
 
